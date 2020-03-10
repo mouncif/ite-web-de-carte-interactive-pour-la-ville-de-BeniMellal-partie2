@@ -1,0 +1,37 @@
+<div class="col-lg-10 grid-margin stretch-card offset-1">
+    <div class="card">
+        <div class="card-body">
+            <div class="alert alert-danger fade show" *ngIf="onDelete" role="alert">
+                L'élément <strong>{{ DeletedElement | uppercase }}</strong> a été supprimé avec succès
+            </div>
+            <h4 class="card-title" style="float: left;">Gestion des marqueurs</h4>
+            <div style="text-align: right;">
+                <button class="btn btn-success btn-fw" type="button" (click)="newPlace()">Ajouter</button>
+            </div>
+            <div class="table-responsive" style="margin-top: 5vh;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let place of places | paginate: { itemsPerPage: 5, currentPage: p }">
+                            <td> {{ place.name }}</td>
+                            <td> {{ place.type }}</td>
+                            <td>
+                                <button class="btn btn-primary" (click)="updatePlace(place)" type="button"><i class="fa fa-edit"></i>Modifier</button>&nbsp;
+                                <button class="btn btn-danger" (click)="deletePlace(place)" type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pag">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

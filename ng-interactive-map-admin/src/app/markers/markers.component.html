@@ -1,0 +1,42 @@
+<div class="col-md-10 grid-margin stretch-card offset-1">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-center">Gestion des marqueurs</h4>
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label for="exampleInputName1">Nom d'endroit</label>
+                    <input [(ngModel)]="place.name" name="nom" type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Image</label>
+                    <input [(ngModel)]="place.image" name="image" type="text" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Large select</label>
+                    <select aria-placeholder="Choisir un type" name="typeSelect" [(ngModel)]="place.type" class="form-control form-control-lg" id="exampleFormControlSelect1">
+                      <option *ngFor="let t of types" value="{{ t }}">{{ t }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputCity1">Description</label>
+                    <textarea [(ngModel)]="place.description" placeholder="Description" name="desc" class="form-control" id="Textarea1" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Coordonnées géographiques</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Latitude &nbsp;&nbsp; <i class="fa fa-th-large"></i>&nbsp;&nbsp; Longitude</span>
+                        </div>
+                        <input type="text" name="lat" [(ngModel)]="place.coordinates[0]" class="form-control" placeholder="Latitude">
+                        <input type="text" name="lon" [(ngModel)]="place.coordinates[1]" class="form-control" placeholder="Longitude">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button *ngIf="!onAddOrUpdate" class="btn btn-primary" (click)="processForm()" type="button"><i class="fa fa-plus"></i>Ajouter place</button>&nbsp;
+                    <button *ngIf="onAddOrUpdate" class="btn btn-warning" (click)="processForm()" type="button"><i class="fa fa-edit"></i>Modifier place</button>&nbsp;
+                    <button class="btn btn-light" (click)="backToList()">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
